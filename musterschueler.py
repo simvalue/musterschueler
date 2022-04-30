@@ -1,18 +1,23 @@
 import math
 #Hier die (erwarteten) Punkte einfüllen
 test_1 = 50 #Erster Test
-test_2 = 20 #Zweiter Test
+test_2 = 30 #Zweiter Test
 shorttest_total = 0 #Alle punkte von kurztests
-total_ue_tasks = 3*11 #10 falls man bei ersten tutorium noch nicht dabei war
+num_ue = 11 #10 falls man bei ersten tutorium noch nicht dabei war
+total_ue_tasks = 3*num_ue 
 tasks_done = 17 #Anzahl der erledigten Aufgaben (1 UE = 3 Aufgaben, erledigt bedeutet min 1 punkt) 
-ue_points_total = 23
+ue_points_total = 31
+worst_ue_points = 0#Punkte auf schlechteste Übung (wird gestrichen) ACHTUNG: Außer ihr wurdet an der Tafel schlechter bewertet!
 
 #Ab hier implementierung der punkteformel, sollte nicht verändert werden müssen
-shorttest_normed = (shorttest_total / 20)*20
+shorttest_normed = (shorttest_total / 20)*20 #TODO: Normierung Kurztests fixen
 shorttest_grade = min(shorttest_normed, 10)
 shorttest_bonus = shorttest_normed-shorttest_grade
 
-ue_points_normed = (ue_points_total / 40)*40
+
+max_ue_points = 9*(num_ue-1) #gestrichene UE mitbeachten
+ue_points_total = ue_points_total - worst_ue_points
+ue_points_normed = ue_points_total*(40/max_ue_points)
 ue_points_grade = min(ue_points_normed, 20)
 ue_points_bonus = ue_points_normed - ue_points_grade
 
