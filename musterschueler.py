@@ -8,9 +8,10 @@ total_ue_tasks = 3*num_ue
 tasks_done = 17 #Anzahl der erledigten Aufgaben (1 UE = 3 Aufgaben, erledigt bedeutet min 1 punkt) 
 ue_points_total = 90
 worst_ue_points = 0#Punkte auf schlechteste Übung (wird gestrichen) ACHTUNG: Außer ihr wurdet an der Tafel schlechter bewertet!
+is_berufstaetig = False
 
 #Ab hier implementierung der punkteformel, sollte nicht verändert werden müssen
-shorttest_normed = (shorttest_total / 20)*20 #TODO: Normierung Kurztests fixen
+shorttest_normed = (shorttest_total / 20)*20 #ACHTUNG: Normierung kurzztest punkte nicht bekannt bisher, könnten weniger zählen!
 shorttest_grade = min(shorttest_normed, 10)
 shorttest_bonus = shorttest_normed-shorttest_grade
 
@@ -23,6 +24,9 @@ ue_points_bonus = ue_points_normed - ue_points_grade
 
 tasks_done_ratio = round(tasks_done/total_ue_tasks, 1)
 
+if is_berufstaetig:
+    total_points = math.floor(200*(test_1+test_2+ue_points_grade)/220 + ue_points_bonus)
+    print(f"Punkteformel: P = 200*(T_1+T_2+U_1)/230 + U_2 = 200*({test_1}+{test_2}+{ue_points_grade})/220 + {ue_points_bonus} = {total_points}")
 total_points = math.floor(200*(test_1+test_2+shorttest_grade+ue_points_grade)/230 + shorttest_bonus + ue_points_bonus)
 print(f"Punkteformel: P = 200*(T_1+T_2+K_1+U_1)/230 +K_2 + U_2 = 200*({test_1}+{test_2}+{shorttest_grade}+{ue_points_grade})/230 + {shorttest_bonus} + {ue_points_bonus} = {total_points}")
 
