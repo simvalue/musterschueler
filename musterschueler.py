@@ -1,12 +1,12 @@
 import math
 #Hier die (erwarteten) Punkte einfüllen
 test_1 = 50 #Erster Test
-test_2 = 30 #Zweiter Test
-shorttest_total = 0 #Alle punkte von kurztests
+test_2 = 20 #Zweiter Test
+shorttest_total = 3 #Alle punkte von kurztests
 num_ue = 11 #10 falls man bei ersten tutorium noch nicht dabei war
 total_ue_tasks = 3*num_ue 
 tasks_done = 17 #Anzahl der erledigten Aufgaben (1 UE = 3 Aufgaben, erledigt bedeutet min 1 punkt) 
-ue_points_total = 31
+ue_points_total = 90
 worst_ue_points = 0#Punkte auf schlechteste Übung (wird gestrichen) ACHTUNG: Außer ihr wurdet an der Tafel schlechter bewertet!
 
 #Ab hier implementierung der punkteformel, sollte nicht verändert werden müssen
@@ -50,9 +50,9 @@ else:
     if total_points > 110:
         grade = grade - 1
     if total_points > 140:
-        grade = -1
+        grade = grade - 1
     if total_points > 170:
-        grade - 1
+        grade = grade - 1
     if total_points > 190:
         print(f"Absolutes Strebertum erreicht!")
     
